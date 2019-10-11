@@ -6,9 +6,9 @@
 fun lazy {HammerFactory}
   {Delay 1000}
   if {RandomInt 0 10} == 0 then
-    {StringToAtom "defect"}|{HammerFactory}
+    defect|{HammerFactory}
   else
-    {StringToAtom "working"}|{HammerFactory}
+    working|{HammerFactory}
   end
 end
 
@@ -30,4 +30,23 @@ fun {HammerConsumer HammerStream N}
   else
     0
   end
+end
+
+
+/**
+ * @brief      Creates a buffer of hammers.
+ *
+ * @param      HammerStream  The hammer stream to make a buffer from
+ * @param      N             The number of hammers to have as buffer
+ *
+ * @return     A buffer
+ */
+fun {BoundedBuffer HammerStream N} BufferEnd        %BufferEnd is the final position of the buffer
+  fun lazy {Loop Stream BufferEnd}                  %Loop returns the requested element, followed by a stream while making HammerFactory generate next hammer 
+    case Stream of H|T then                         %H will be evaluated while T ({Loop ...}) is optimized. 
+      H|{Loop T thread BufferEnd.2 end}             %The parameters are evaluated so BufferEnd.2 runs the lazy hammerfactory.
+    end
+  end in
+  BufferEnd = thread {List.drop HammerStream N} end %List.drop forces the first N values to be evaluated and BufferEnd is the stream after the N evaluated values
+  {Loop HammerStream BufferEnd}                     %Returns the lazy buffer
 end

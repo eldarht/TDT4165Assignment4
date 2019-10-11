@@ -41,6 +41,22 @@ define
     {System.show Consumer}
   end
   {System.showInfo "c)"}
-  {System.showInfo "\tNot implemented"}
+  {System.printInfo "\tWith buffer:\t"}
+  local HammerStream Buffer Consumer in
+    HammerStream = {HammerFactory}
+    Buffer = {BoundedBuffer HammerStream 6}
+    {Delay 6000}
+    Consumer = {HammerConsumer Buffer 10}
+    {System.show Consumer}
+  end
+
+  {System.printInfo "\tWithout buffer:\t"}
+  local HammerStream Consumer in
+    HammerStream = {HammerFactory}
+    {Delay 6000}
+    Consumer = {HammerConsumer HammerStream 10}
+    {System.show Consumer}
+  end
+
   {Application.exit 0}
 end
