@@ -4,12 +4,12 @@ import
   System 
 define
   \insert Stream.oz
-  \insert StringUtil.oz
+  \insert Util.oz
 
   {System.showInfo "========================"}
   {System.showInfo "Task 1"}
   {System.printInfo "\t{GenerateOdd ~3 10}: \t"}
-    {System.print {GenerateOdd ~3 10}}
+    {System.print {Unlazy {GenerateOdd ~3 10}}}
   {System.showInfo "\n========================"}
   {System.showInfo "Task 2"}
   {System.printInfo "\t{Product [1 2 3 4]}: \t"}
