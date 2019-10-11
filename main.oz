@@ -2,14 +2,16 @@ functor
 import 
   Application 
   System 
+  OS
 define
   \insert Stream.oz
   \insert Util.oz
+  \insert Hammer.oz
 
   {System.showInfo "========================"}
   {System.showInfo "Task 1"}
   {System.printInfo "\t{GenerateOdd ~3 10}: \t"}
-    {System.print {Unlazy {GenerateOdd ~3 10}}}
+    {System.print {Unlazy {GenerateOdd ~3 10} ~1}}
   {System.showInfo "\n========================"}
   {System.showInfo "Task 2"}
   {System.printInfo "\t{Product [1 2 3 4]}: \t"}
@@ -25,12 +27,13 @@ define
   end
   {System.showInfo "\n========================"}
   {System.showInfo "Task 4"}
-  {System.showInfo "\tNot implemented"}
+  {System.showInfo "\t Theory is in Readme.md"}
   {System.showInfo "========================"}  
   {System.showInfo "Task 5"}
   {System.showInfo "a)"}
-  {System.showInfo "\tNot implemented"}
-  {System.showInfo "b)"}
+    {System.printInfo "\tThe five next hammers from {Hammer}: \t"}
+    {System.print {Unlazy {HammerFactory} 4}}
+  {System.showInfo "\nb)"}
   {System.showInfo "\tNot implemented"}
   {System.showInfo "c)"}
   {System.showInfo "\tNot implemented"}
