@@ -30,11 +30,16 @@ define
   {System.showInfo "\t Theory is in Readme.md"}
   {System.showInfo "========================"}  
   {System.showInfo "Task 5"}
-  {System.showInfo "a)"}
+  {System.showInfo "a) (5 sec delay)"}
     {System.printInfo "\tThe five next hammers from {Hammer}: \t"}
     {System.print {Unlazy {HammerFactory} 4}}
-  {System.showInfo "\nb)"}
-  {System.showInfo "\tNot implemented"}
+  {System.showInfo "\nb) (10 sec delay)"}
+  {System.printInfo "\tNumber of working hammers is:\t"}
+  local HammerTime Consumer in
+    HammerTime = {HammerFactory}
+    Consumer = {HammerConsumer HammerTime 10}
+    {System.show Consumer}
+  end
   {System.showInfo "c)"}
   {System.showInfo "\tNot implemented"}
   {Application.exit 0}

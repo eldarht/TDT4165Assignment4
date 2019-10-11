@@ -11,3 +11,23 @@ fun lazy {HammerFactory}
     {StringToAtom "working"}|{HammerFactory}
   end
 end
+
+/**
+ * @brief      Finds the number of working hammers in the start of a hammerstream
+ *
+ * @param      HammerStream  The hammer stream
+ * @param      N             The number of hammers to check
+ *
+ * @return     Integer of working hammers
+ */
+fun {HammerConsumer HammerStream N}
+  if N > 0 then
+    if HammerStream.1 == working then
+      1+{HammerConsumer HammerStream.2 N-1}
+    else
+      {HammerConsumer HammerStream.2 N-1}
+    end
+  else
+    0
+  end
+end
