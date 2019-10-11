@@ -19,7 +19,7 @@ define
   {System.showInfo "\n========================"}
   {System.showInfo "Task 3"}
   local Stream Block in
-    thread {System.printInfo "First 3 digits of product of odd numbers between 0 and 1000: \n \t"#
+    thread {System.printInfo "\tFirst 3 digits of product of odd numbers between 0 and 1000: \n \t"#
       {GetChars {IntToString {Product Stream} } 3 }}  Block = nil 
     end
     Stream = {GenerateOdd 0 1000}
