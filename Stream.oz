@@ -6,8 +6,8 @@
  *
  * @return     List of odd numbers
  */
-fun {GenerateOdd S E}
-  fun {GenStream CurrentValue End JumpSize}
+fun lazy {GenerateOdd S E}
+  fun lazy {GenStream CurrentValue End JumpSize}
     if CurrentValue > End then
       nil
     else
